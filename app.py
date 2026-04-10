@@ -840,7 +840,7 @@ if st.sidebar.button("🔄 Refresh Now"):
         fetch_and_store(symbol, interval)
         for idx_sym in TOP_INDIA_SYMBOLS.values():
             fetch_and_store(idx_sym, "1d")
-    st.session_state.last_refresh = datetime.now()
+    st.session_state.last_refresh = datetime.now(ist)
     st.rerun()
 
 elapsed = (datetime.now(ist) - st.session_state.last_refresh).seconds
@@ -851,11 +851,11 @@ st.sidebar.markdown(
 
 
 
-# ── Auto-refresh logic
-if auto_refresh and elapsed >= 120:
-    fetch_and_store(symbol, interval)
-    st.session_state.last_refresh = datetime.now()
-    st.rerun()
+    # ── Auto-refresh logic
+    if auto_refresh and elapsed >= 120:
+        fetch_and_store(symbol, interval)
+        st.session_state.last_refresh = datetime.now(ist)
+        st.rerun()
 
 
 # ===============================
