@@ -8,6 +8,10 @@ import yfinance as yf
 from yfinance.exceptions import YFRateLimitError
 from datetime import datetime, timedelta
 import time
+from datetime import datetime
+import pytz
+
+
 
 # ===============================
 # STREAMLIT CONFIG
@@ -413,7 +417,9 @@ DEFAULT_PERIOD = "1y"
 # AUTO-REFRESH STATE
 # ===============================
 if "last_refresh" not in st.session_state:
-    st.session_state.last_refresh = datetime.now()
+    ist = pytz.timezone("Asia/Kolkata")
+    st.session_state.last_refresh = datetime.now(ist)
+    
 if "auto_refresh" not in st.session_state:
     st.session_state.auto_refresh = False
 
@@ -1322,6 +1328,5 @@ with tab4:
 # ===============================
 st.markdown("<div style='height:24px'></div>", unsafe_allow_html=True)
 st.caption(
-f"Market Analytics Dashboard · DB-driven analytics · {datetime.now().strftime('%d %b %Y %H:%M')} IST · "
-    "BUILT BY NAVEEN RAJA"
+f"Market Analytics Dashboard · DB-driven analytics · {st.session_state.last_refresh.strftime('%d %b %Y %H:%M')} IST · BUILT BY NAVEEN RAJA"
 )
