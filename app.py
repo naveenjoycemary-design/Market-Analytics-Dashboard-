@@ -10,7 +10,7 @@ from datetime import datetime, timedelta
 import time
 from datetime import datetime
 import pytz
-
+ist = pytz.timezone("Asia/Kolkata")
 
 
 # ===============================
@@ -843,7 +843,7 @@ if st.sidebar.button("🔄 Refresh Now"):
     st.session_state.last_refresh = datetime.now()
     st.rerun()
 
-elapsed = (datetime.now() - st.session_state.last_refresh).seconds
+elapsed = (datetime.now(ist) - st.session_state.last_refresh).seconds
 st.sidebar.markdown(
     f"<div style='font-size:0.65rem;color:#5a6a82;margin-top:8px;'>Last refresh: {elapsed}s ago</div>",
     unsafe_allow_html=True
