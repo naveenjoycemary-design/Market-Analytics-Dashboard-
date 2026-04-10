@@ -421,7 +421,7 @@ if "last_refresh" not in st.session_state:
     st.session_state.last_refresh = datetime.now(ist)
     
 if "auto_refresh" not in st.session_state:
-    st.session_state.auto_refresh = False
+    st.session_state.auto_refresh = True
 
 # ===============================
 # DATA PIPELINE
