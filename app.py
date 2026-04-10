@@ -852,7 +852,7 @@ st.sidebar.markdown(
 
 
     # ── Auto-refresh logic
-    if auto_refresh and elapsed >= 120:
+if auto_refresh and elapsed >= 120:
         fetch_and_store(symbol, interval)
         st.session_state.last_refresh = datetime.now(ist)
         st.rerun()
